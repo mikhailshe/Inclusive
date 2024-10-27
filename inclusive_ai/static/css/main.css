@@ -121,18 +121,21 @@ p {
     margin: 0 auto 20px;
 }
 
-#intro, #join {
+#intro,
+#join {
     background-color: var(--light-bg);
 }
 
-#intro p, #join p {
+#intro p,
+#join p {
     font-size: 20px;
     font-weight: 500;
     max-width: 800px;
     margin: 0 auto 30px;
 }
 
-#intro .btn, #join .btn {
+#intro .btn,
+#join .btn {
     font-size: 18px;
     padding: 12px 24px;
 }

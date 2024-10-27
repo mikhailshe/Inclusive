@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/pears.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<header>
+    <div class="container">
+        <h1><a href="{% url 'homepage' %}">Inclusive AI</a></h1>
+        <nav>
+            <a href="{% url 'homepage' %}" class="btn btn-outline">Главная</a>
+            <a href="{% url 'users:logout' %}" class="btn btn-solid">Выйти</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <h2>Pears — Обучающие сказки</h2>
+        <div class="initiative-content">
+            <h3>О проекте</h3>
+            <p>Pears — это инновационная методика обучения детей с расстройствами аутического спектра, использующая интерактивные сказки для развития речевых навыков и расширения словарного запаса.</p>
+            <p>Основные особенности:</p>
+            <ul>
+                <li>Адаптивный алгоритм, подстраивающийся под индивидуальные потребности каждого ребенка</li>
+                <li>Визуальная поддержка для облегчения понимания новых слов и выражений</li>
+                <li>Интерактивные элементы, повышающие вовлеченность и мотивацию к обучению</li>
+                <li>Система отслеживания прогресса для родителей и специалистов</li>
+            </ul>
+            <p>Pears помогает детям с аутизмом преодолеть трудности в коммуникации и социальном взаимодействии, делая процесс обучения увлекательным и эффективным.</p>
+        </div>
+        <div class="chat-container">
+            <div class="chat-messages">
+                <div id="chatMessages">
+                    <!-- Chat messages will be displayed here -->
+                    <p>— Добро пожаловать в чат с Pears!</p>
+                </div>
+                <div style="margin-top: 30px; margin-bottom: 10px;"><a href="{% url 'pears' %}" class="btn btn-solid d-none" id="generateButton">Сгенерировать сказку!</a></div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="О чем будет ваша сказка? Что должен выучить ребенок?">
+                <button onclick="sendMessage()">Отправить</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    var wasMessages = false,
+        messagesContent = "";
+
+    function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const message = input.value.trim();
+        if (message) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageElement = document.createElement('p');
+            document.getElementById('generateButton').className = document.getElementById('generateButton').className.replace('d-none', '');
+            messageElement.textContent = `${wasMessages ? "" : "— "}${message}`;
+            messagesContent += message;
+            chatMessages.appendChild(messageElement);
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            wasMessages = true;
+        }
+    }
+
+    document.getElementById('chatInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+</script>
+{% endblock content %}

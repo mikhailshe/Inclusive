@@ -8,10 +8,8 @@
         <h1>Inclusive AI</h1>
         {% if request.user.is_authenticated %}
         <nav>
-            <div style="display: flex; align-items: center; color: var(--accent-color); font-weight: 600; font-size: 120%; margin-right: 8px;">
-                @{{ request.user.username }}
-            </div>
-            <a class="btn btn-outline" href="{% url 'users:logout' %}">Выйти</a>
+            <a class="btn btn-outline" href="{% url 'initiatives' %}">Платформа</a>
+            <a class="btn btn-solid" href="{% url 'users:logout' %}">Выйти</a>
         </nav>
         {% else %}
         <nav>

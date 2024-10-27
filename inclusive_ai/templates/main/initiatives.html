@@ -4,37 +4,6 @@
 
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/initiatives.css' %}">
-<style>
-  .initiative-card {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .initiative-content {
-    transition: transform 0.3s ease;
-  }
-  
-  .start-button {
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--accent-color);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: bottom 0.3s ease;
-  }
-  
-  .initiative-card:hover .initiative-content {
-    transform: translateY(-25px);
-  }
-  
-  .initiative-card:hover .start-button {
-    bottom: 20px;
-  }
-</style>
 {% endblock %}
 
 {% block content %}
@@ -52,7 +21,7 @@
     <div class="container" style="z-index: 100;">
         <h2>Личный кабинет</h2>
         <div class="initiatives-list">
-            <a class="initiative-card" href="#">
+            <a class="initiative-card" href="{% url 'pears' %}">
                 <div class="initiative-content">
                     <h3>Pears — Обучающие сказки</h3>
                     <p>Pears — это инновационная методика обучения детей с расстройствами аутического спектра, использующая интерактивные сказки для развития речевых навыков и расширения словарного запаса.</p>
@@ -65,9 +34,9 @@
                     </ul>
                     <p>Pears помогает детям с аутизмом преодолеть трудности в коммуникации и социальном взаимодействии, делая процесс обучения увлекательным и эффективным.</p>
                 </div>
-                <span href="#" class="start-button">Начать</span>
+                <span class="start-button">Начать</span>
             </a>
-            <a class="initiative-card" href="#">
+            <div class="initiative-card">
                 <div class="initiative-content">
                     <h3>Диагностическое тестирование</h3>
                     <p>Наше диагностическое тестирование — это передовой инструмент для оценки знаний и навыков детей с ограниченными возможностями здоровья, который автоматически адаптируется к индивидуальным особенностям каждого ребенка.</p>
@@ -80,9 +49,9 @@
                     </ul>
                     <p>Это тестирование позволяет точно определить уровень развития ребенка и создать индивидуальный план обучения, максимально отвечающий его потребностям.</p>
                 </div>
-                <span href="#" class="start-button">Начать</span>
-            </a>
-            <a class="initiative-card" href="#">
+                <span class="start-button" style="opacity: 0.5;">Начать</span>
+            </div>
+            <div class="initiative-card">
                 <div class="initiative-content">
                     <h3>ИИ Задачник</h3>
                     <p>ИИ Задачник — это инновационная система, использующая искусственный интеллект для создания персонализированных учебных задач на основе результатов диагностического тестирования.</p>
@@ -95,8 +64,8 @@
                     </ul>
                     <p>ИИ Задачник помогает сделать процесс обучения более эффективным и увлекательным, предоставляя каждому ребенку задания, которые наилучшим образом способствуют его развитию.</p>
                 </div>
-                <span class="start-button">Начать</span>
-            </a>
+                <span class="start-button" style="opacity: 0.5;">Начать</span>
+            </div>
         </div>
     </div>
 </main>

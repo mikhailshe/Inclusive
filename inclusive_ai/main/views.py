@@ -11,3 +11,8 @@ def homepage(request: HttpRequest) -> HttpResponse:
 @login_required(login_url=settings.LOGIN_URL)
 def initiatives(request: HttpRequest) -> HttpResponse:
     return render(request, 'main/initiatives.html')
+
+
+@login_required(login_url=settings.LOGIN_URL)
+def pears(request: HttpRequest) -> HttpResponse:
+    return render(request, 'main/pears.html')
