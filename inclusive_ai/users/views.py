@@ -24,4 +24,4 @@ class RegisterUser(CreateView):
 
 def logout_user(request):
     logout(request)
-    return redirect('users:login')
+    return redirect('homepage')

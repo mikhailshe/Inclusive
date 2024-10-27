@@ -29,7 +29,6 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost',
 ]
 
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -76,7 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'settings.wsgi.application'
-
 
 # Database
 
