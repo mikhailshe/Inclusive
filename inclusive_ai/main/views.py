@@ -15,4 +15,14 @@ def initiatives(request: HttpRequest) -> HttpResponse:
 
 @login_required(login_url=settings.LOGIN_URL)
 def pears(request: HttpRequest) -> HttpResponse:
+    messages = request.GET.get('messages', '')
+    word = request.GET.get('word', '')
+
+    if messages and word:
+        return render(request, 'main/pears-generate.html', context={
+            'messages': messages,
+            'word': word,
+        })
+    
     return render(request, 'main/pears.html')
+    

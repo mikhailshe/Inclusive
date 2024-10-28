@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/pears.css' %}">
+{% endblock %}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<main>
+    <div class="container">
+        <h2>Pears — Обучающие сказки</h2>
+        <div class="initiative-content">
+            <h3 class="mt-2">Описание сказки</h3>
+            <pre style="font-family: 'Manrope'; font-size: 18px;">{{ messages }}</pre>
+            <h3 class="mt-2">Слово</h3>
+            <pre style="font-family: 'Manrope'; font-size: 18px;">{{ word }}</pre>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

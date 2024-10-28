@@ -52,7 +52,11 @@ header .container {
 h1 {
     font-size: 24px;
     font-weight: 700;
+}
+
+h1 a {
     color: var(--accent-color);
+    text-decoration: none;
 }
 
 nav {

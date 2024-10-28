@@ -7,15 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<header>
-    <div class="container">
-        <h1><a href="{% url 'homepage' %}">Inclusive AI</a></h1>
-        <nav>
-            <a href="{% url 'homepage' %}" class="btn btn-outline">Главная</a>
-            <a href="{% url 'users:logout' %}" class="btn btn-solid">Выйти</a>
-        </nav>
-    </div>
-</header>
+{% include 'includes/header.html' %}
 
 <main style="position: relative;">
     <div class="container" style="z-index: 100;">
