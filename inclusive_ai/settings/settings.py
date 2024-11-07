@@ -139,3 +139,7 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ANTHROPIC_API_KEY = getenv('ANTHROPIC_API_KEY')
+
+AI_PROXY = getenv('AI_PROXY')

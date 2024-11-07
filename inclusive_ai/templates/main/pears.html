@@ -96,9 +96,10 @@
             document.getElementById('nextStepButton').innerHTML = 'Сгенерировать';
             document.getElementById('nextStepButton').className += ' d-none';
         } else {
-            location.replace(
-                `{% url 'pears' %}?word=${encodeURIComponent(newWord)}&messages=${encodeURIComponent(messagesContent)}`
-            );
+            document.getElementById('nextStepButton').innerHTML = 'Ошибка подключения ИИ';
+            // location.replace(
+            //     `{% url 'pears' %}?word=${encodeURIComponent(newWord)}&messages=${encodeURIComponent(messagesContent)}`
+            // );
         }
     }
 
