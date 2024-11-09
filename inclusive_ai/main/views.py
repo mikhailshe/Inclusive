@@ -1,3 +1,4 @@
+from asgiref.sync import sync_to_async
 import anthropic
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
@@ -11,14 +12,25 @@ def homepage(request: HttpRequest) -> HttpResponse:
     return render(request, 'main/homepage.html')
 
 
-@login_required(login_url=settings.LOGIN_URL)
+# @login_required(login_url=settings.LOGIN_URL)
 def initiatives(request: HttpRequest) -> HttpResponse:
     return render(request, 'main/initiatives.html')
 
 
-@login_required(login_url=settings.LOGIN_URL)
+@sync_to_async
+# @login_required(login_url=settings.LOGIN_URL)
 def pears(request: HttpRequest) -> HttpResponse:
     def get_ai_response(messages, word):
+        PROXIES = {}
+
+        if settings.AI_PROXY:
+            PROXIES['all://'] = settings.AI_PROXY
+
+        client = anthropic.Anthropic(
+            api_key=settings.ANTHROPIC_API_KEY,
+            http_client=httpx.Client(proxies=PROXIES),
+        )
+        
         response = client.messages.create(
             model='claude-3-haiku-20240307',
             max_tokens=200,
@@ -80,25 +92,14 @@ def pears(request: HttpRequest) -> HttpResponse:
                     s_info += [int(i)]
             if s_info:
                 p_text += [s_info]
-        print(f'\n\n\n{response}\n\n')
         return {'text': p_text, 'answers': answers}
 
-    
+
     messages = request.GET.get('messages', '').strip()
     word = request.GET.get('word', '').strip()
     
     if not (messages and word):
         return render(request, 'main/pears.html')
-
-    PROXIES = {}
-
-    if settings.AI_PROXY:
-        PROXIES['all://'] = settings.AI_PROXY
-
-    client = anthropic.Anthropic(
-        api_key=settings.ANTHROPIC_API_KEY,
-        http_client=httpx.Client(proxies=PROXIES),
-    )
     
     for _i in range(1, 6):
         response = get_ai_response(messages, word)
